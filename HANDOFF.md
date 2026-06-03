@@ -7,7 +7,8 @@ source of truth for what's done and what's next, and update it every session.
 ## Start-of-session checklist
 1. Clone the repo (the assistant's sandbox starts empty each session).
 2. Install the .NET 8 SDK in the sandbox (`apt-get install -y dotnet-sdk-8.0` from the Ubuntu archive).
-3. Read `manifest.json` → pick the next `pending` / `in-progress` group or entity.
+3. Read `manifest.json` → pick the next work. For Billing, take the next `pending` **chunk**
+   (`groups[Billing].chunks`, also in `docs/BILLING_PLAN.md`); for other groups, the next entity.
 4. Read `docs/CODEGEN.md` for the exact file recipe.
 5. Read the relevant Nexudus doc pages for the entity's fields and resource path.
 
@@ -44,9 +45,10 @@ is never printed, and is never committed. `.gitignore` excludes `*.pat`, `.env`,
   pieces still pending. Done so far: Charge, DiscountCode, ExtraService, FinancialAccount,
   PaymentGateway, Product. Full inventory + per-entity status is in `manifest.json`.
 - Decisions locked: System group namespace = `Nexudus.SystemApi`; CRM = `Nexudus.Crm`.
-- Next up (Billing): work through the 44 pending entities in batches. Before generating the
-  read-only/partial ones (Invoice, LedgerEntry, CoworkerInvoice, CoworkerInvoiceLine, *UseHistory),
-  confirm which verbs exist and consider adding a `ReadOnlyEndpoint<T>` / partial base to core so
-  unsupported methods aren't exposed.
+- Next up (Billing): the 44 pending entities are split into **9 ordered chunks** — see
+  `docs/BILLING_PLAN.md` (human) and `manifest.json` -> `groups[Billing].chunks` (machine).
+  Each session takes the next chunk with `status: pending`, generates it, builds clean, marks the
+  chunk `done`, and commits. Chunk 9 (read-only entities) must add a `ReadOnlyEndpoint<T>` base to
+  core first so Create/Delete aren't exposed where unsupported.
 - After Billing: Authentication → SystemApi → Security → Apps → CRM → Spaces → Community →
   Collaboration → Content.
