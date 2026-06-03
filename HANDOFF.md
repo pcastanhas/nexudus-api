@@ -41,9 +41,10 @@ is never printed, and is never committed. `.gitignore` excludes `*.pat`, `.env`,
 
 ## Current status
 - Core library: **complete** (client, auth + refresh, paging, search/filter, command results, errors, streaming).
-- **Billing: 26 / 50 entities done** (chunks 1-4 done; 5-9 pending). Full inventory + chunk
-  status in `manifest.json`; next pending chunk is 5 (Coworker subscriptions & usage).
-  Chunk 4 (Contract family) added `ContractContactType` + `AmlCheckStatus` enums to `BillingEnums.cs`.
+- **Billing: 31 / 50 entities done** (chunks 1-5 done; 6-9 pending). Full inventory + chunk
+  status in `manifest.json`; next pending chunk is 6 (Coworker credits, payments, tokens).
+  Chunk 5 (Coworker subscriptions & usage) added the `RecurrentChargePattern` enum to `BillingEnums.cs`;
+  chunk 4 added `ContractContactType` + `AmlCheckStatus`.
 - Decisions locked: System group namespace = `Nexudus.SystemApi`; CRM = `Nexudus.Crm`.
 - Next up (Billing): the 44 pending entities are split into **9 ordered chunks** — see
   `docs/BILLING_PLAN.md` (human) and `manifest.json` -> `groups[Billing].chunks` (machine).

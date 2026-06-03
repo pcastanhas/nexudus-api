@@ -49,3 +49,14 @@ public enum AmlCheckStatus
     Error = 5,
     ManuallyCleared = 6
 }
+
+/// <summary>Recurrence pattern for a recurrent charge (<c>eRecurrentChargePattern</c>).</summary>
+public enum RecurrentChargePattern
+{
+    PricePlan = 1,
+    Day = 2,
+    Week = 3,
+    Month = 4,
+    Year = 5,
+    LastDayOfMonth = 6
+}

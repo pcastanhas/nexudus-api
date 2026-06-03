@@ -25,7 +25,7 @@
       "namespace": "Nexudus.Billing",
       "docPathPrefix": "rest-api/billing",
       "status": "in-progress",
-      "notes": "26/50 entities done. Chunks 1-4 done; 5-9 pending. Some entities are read-only/partial (Invoice, LedgerEntry, CoworkerInvoice, CoworkerInvoiceLine, *UseHistory) - confirm verb support before assuming full CRUD; chunk 9 needs a ReadOnlyEndpoint<T> base added to core first.",
+      "notes": "31/50 entities done. Chunks 1-5 done; 6-9 pending. Chunk 9 needs a ReadOnlyEndpoint<T> base added to core first (Invoice, LedgerEntry, CoworkerInvoice have no post/delete pages). Note: CoworkerExtraServiceUseHistory is a ledger view but the API exposes full CRUD, so it was generated with the standard template.",
       "entities": [
         {
           "name": "BasketSession",
@@ -89,7 +89,7 @@
         {
           "name": "CoworkerContract",
           "resourcePath": "billing/coworkercontracts",
-          "status": "pending",
+          "status": "done",
           "chunk": 5
         },
         {
@@ -101,13 +101,13 @@
         {
           "name": "CoworkerExtraService",
           "resourcePath": "billing/coworkerextraservices",
-          "status": "pending",
+          "status": "done",
           "chunk": 5
         },
         {
           "name": "CoworkerExtraServiceUseHistory",
           "resourcePath": "billing/coworkerextraserviceusehistories",
-          "status": "pending",
+          "status": "done",
           "chunk": 5
         },
         {
@@ -152,13 +152,13 @@
         {
           "name": "CoworkerProduct",
           "resourcePath": "billing/coworkerproducts",
-          "status": "pending",
+          "status": "done",
           "chunk": 5
         },
         {
           "name": "CoworkerTimePass",
           "resourcePath": "billing/coworkertimepasses",
-          "status": "pending",
+          "status": "done",
           "chunk": 5
         },
         {
@@ -381,7 +381,7 @@
         {
           "id": 5,
           "theme": "Coworker subscriptions & usage",
-          "status": "pending",
+          "status": "done",
           "entities": [
             "CoworkerContract",
             "CoworkerProduct",
