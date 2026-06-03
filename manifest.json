@@ -1,0 +1,83 @@
+{
+  "$comment": "Source-of-truth progress tracker. Each session reads this, picks the next 'pending' work, updates statuses, and commits. Entity lists per group are finalized from the docs as each group is started.",
+  "apiBaseUrl": "https://spaces.nexudus.com/api",
+  "docsIndex": "https://learn.nexudus.com/llms.txt",
+  "rootNamespace": "Nexudus",
+  "targetFramework": "net8.0",
+  "groups": [
+    {
+      "name": "Authentication",
+      "namespace": "Nexudus.Authentication",
+      "docPathPrefix": "rest-api/authentication",
+      "status": "pending",
+      "notes": "Token/refresh flow is already implemented in core (NexudusClient). Confirm whether this group adds CRUD entities (e.g. API keys) or is doc-only.",
+      "entities": []
+    },
+    {
+      "name": "Apps and Market Place",
+      "namespace": "Nexudus.Apps",
+      "docPathPrefix": "rest-api/apps",
+      "status": "pending",
+      "entities": []
+    },
+    {
+      "name": "Billing",
+      "namespace": "Nexudus.Billing",
+      "docPathPrefix": "rest-api/billing",
+      "status": "in-progress",
+      "entities": [
+        { "name": "Charge", "resourcePath": "billing/charges", "status": "done" }
+      ]
+    },
+    {
+      "name": "Collaboration",
+      "namespace": "Nexudus.Collaboration",
+      "docPathPrefix": "rest-api/collaboration",
+      "status": "pending",
+      "entities": []
+    },
+    {
+      "name": "Community",
+      "namespace": "Nexudus.Community",
+      "docPathPrefix": "rest-api/community",
+      "status": "pending",
+      "entities": []
+    },
+    {
+      "name": "Content",
+      "namespace": "Nexudus.Content",
+      "docPathPrefix": "rest-api/content",
+      "status": "pending",
+      "entities": []
+    },
+    {
+      "name": "CRM",
+      "namespace": "Nexudus.Crm",
+      "docPathPrefix": "rest-api/crm",
+      "status": "pending",
+      "entities": []
+    },
+    {
+      "name": "Security",
+      "namespace": "Nexudus.Security",
+      "docPathPrefix": "rest-api/security",
+      "status": "pending",
+      "entities": []
+    },
+    {
+      "name": "Spaces",
+      "namespace": "Nexudus.Spaces",
+      "docPathPrefix": "rest-api/spaces",
+      "status": "pending",
+      "entities": []
+    },
+    {
+      "name": "System",
+      "namespace": "Nexudus.System",
+      "docPathPrefix": "rest-api/system",
+      "status": "pending",
+      "notes": "Namespace 'Nexudus.System' can shadow the global 'System' namespace in unqualified references. Decide: keep for consistency (and qualify where needed) or use 'Nexudus.SystemApi'.",
+      "entities": []
+    }
+  ]
+}

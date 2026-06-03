@@ -1,0 +1,22 @@
+<Project>
+
+  <!-- Shared properties for every project in the solution. -->
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+  <!-- Library packaging metadata (applied to the Nexudus project). -->
+  <PropertyGroup Condition="'$(MSBuildProjectName)' == 'Nexudus'">
+    <Version>0.1.0</Version>
+    <Authors>pcastanhas</Authors>
+    <Description>Strongly-typed .NET client for the Nexudus REST API.</Description>
+    <PackageProjectUrl>https://github.com/pcastanhas/nexudus-api</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/pcastanhas/nexudus-api</RepositoryUrl>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);CS1591</NoWarn>
+  </PropertyGroup>
+
+</Project>

@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- Common properties live in /Directory.Build.props -->
+  <PropertyGroup>
+    <RootNamespace>Nexudus</RootNamespace>
+    <AssemblyName>Nexudus</AssemblyName>
+  </PropertyGroup>
+
+</Project>
