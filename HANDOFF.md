@@ -41,9 +41,11 @@ is never printed, and is never committed. `.gitignore` excludes `*.pat`, `.env`,
 
 ## Current status
 - Core library: **complete** (client, auth + refresh, paging, search/filter, command results, errors, streaming).
-- **Billing: 43 / 50 entities done** (chunks 1-7 done; 8-9 pending). Full inventory + chunk
-  status in `manifest.json`; next pending chunk is 8 (standalone records: BasketSession,
-  BusinessCharge, ResourceProduct). Chunk 7 (Proposal family) added the `ProposalStatus` enum.
+- **Billing: 46 / 50 entities done** (chunks 1-8 done; only chunk 9 pending). Full inventory + chunk
+  status in `manifest.json`. **Chunk 9 (read-only) is the last Billing chunk** and has a prerequisite:
+  FIRST add a `ReadOnlyEndpoint<T>` base to core (Search/GetOne/GetMultiple/Update, no Create/Delete),
+  then generate Invoice, LedgerEntry, CoworkerInvoice, CoworkerInvoiceLine. Confirm each entity's verbs
+  from its docs (Invoice/LedgerEntry/CoworkerInvoice lack post/delete; CoworkerInvoiceLine has only put).
   Enums added across chunks: `ContractContactType`/`AmlCheckStatus` (4), `RecurrentChargePattern` (5),
   `PaymentProvider` (6), `ProposalStatus` (7). Partial-verb: `CoworkerBookingCreditUseHistory` (no delete).
 - Decisions locked: System group namespace = `Nexudus.SystemApi`; CRM = `Nexudus.Crm`.
