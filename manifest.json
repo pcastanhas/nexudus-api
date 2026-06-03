@@ -25,7 +25,7 @@
       "namespace": "Nexudus.Billing",
       "docPathPrefix": "rest-api/billing",
       "status": "in-progress",
-      "notes": "31/50 entities done. Chunks 1-5 done; 6-9 pending. Chunk 9 needs a ReadOnlyEndpoint<T> base added to core first (Invoice, LedgerEntry, CoworkerInvoice have no post/delete pages). Note: CoworkerExtraServiceUseHistory is a ledger view but the API exposes full CRUD, so it was generated with the standard template.",
+      "notes": "38/50 entities done. Chunks 1-6 done; 7-9 pending. Chunk 9 needs a ReadOnlyEndpoint<T> base added to core first (Invoice, LedgerEntry, CoworkerInvoice lack post/delete pages). Partial-verb entities so far: CoworkerBookingCreditUseHistory (no delete).",
       "entities": [
         {
           "name": "BasketSession",
@@ -77,14 +77,15 @@
         {
           "name": "CoworkerBookingCredit",
           "resourcePath": "billing/coworkerbookingcredits",
-          "status": "pending",
+          "status": "done",
           "chunk": 6
         },
         {
           "name": "CoworkerBookingCreditUseHistory",
           "resourcePath": "billing/coworkerbookingcreditusehistories",
-          "status": "pending",
-          "chunk": 6
+          "status": "done",
+          "chunk": 6,
+          "note": "No delete endpoint; API omits the delete wrapper."
         },
         {
           "name": "CoworkerContract",
@@ -95,7 +96,7 @@
         {
           "name": "CoworkerDiscountCode",
           "resourcePath": "billing/coworkerdiscountcodes",
-          "status": "pending",
+          "status": "done",
           "chunk": 6
         },
         {
@@ -113,7 +114,7 @@
         {
           "name": "CoworkerInvoiceHistory",
           "resourcePath": "billing/coworkerinvoicehistories",
-          "status": "pending",
+          "status": "done",
           "chunk": 6
         },
         {
@@ -126,7 +127,7 @@
         {
           "name": "CoworkerInvoicePaymentToken",
           "resourcePath": "billing/coworkerinvoicepaymenttokens",
-          "status": "pending",
+          "status": "done",
           "chunk": 6
         },
         {
@@ -139,14 +140,14 @@
         {
           "name": "CoworkerLedgerEntry",
           "resourcePath": "billing/coworkerledgerentries",
-          "status": "pending",
+          "status": "done",
           "chunk": 6,
-          "note": "Customer payments ledger. Payments = credit entries; filter by from_/to_TransactionDate for payments in a date range. PaymentGatewayName uses ePaymentProvider -> add a typed PaymentProvider enum + a PaymentsBetween(from,to) filter helper."
+          "note": "Payments ledger. PaymentGatewayName/RegularPaymentProvider use ePaymentProvider (distinct from PaymentGateway's ~200-member ePaymentGatewayType). Mapped to a partial PaymentProvider enum (None=0, Stripe=2, StripeACH=11, GoCardless=12, StripeBACS=13 - the documented values; numeric enum deserialization tolerates other provider values). CoworkerLedgerEntryFilter adds PaymentsBetween(from,to)."
         },
         {
           "name": "CoworkerPaymentMethod",
           "resourcePath": "billing/coworkerpaymentmethods",
-          "status": "pending",
+          "status": "done",
           "chunk": 6
         },
         {
@@ -394,7 +395,7 @@
         {
           "id": 6,
           "theme": "Coworker credits, payments, tokens",
-          "status": "pending",
+          "status": "done",
           "entities": [
             "CoworkerBookingCredit",
             "CoworkerBookingCreditUseHistory",

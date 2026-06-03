@@ -60,3 +60,18 @@ public enum RecurrentChargePattern
     Year = 5,
     LastDayOfMonth = 6
 }
+
+/// <summary>
+/// Payment provider that processed a transaction (<c>ePaymentProvider</c>). This is distinct from
+/// <c>ePaymentGatewayType</c> (see <c>PaymentGateway.PaymentGatewayType</c>). Only the values documented
+/// for the customer payment-method/ledger entities are mapped here; the full provider set is larger, so
+/// other providers may appear as undefined numeric values (which still round-trip safely).
+/// </summary>
+public enum PaymentProvider
+{
+    None = 0,
+    Stripe = 2,
+    StripeACH = 11,
+    GoCardless = 12,
+    StripeBACS = 13
+}
