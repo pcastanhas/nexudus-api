@@ -11,6 +11,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{C309
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuickStart", "samples\QuickStart\QuickStart.csproj", "{956CE6C1-F212-49CE-962E-53D8EB3A6053}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InvoicesAndPayments", "samples\InvoicesAndPayments\InvoicesAndPayments.csproj", "{E99F201B-4FCC-46F7-8BBB-CBA77B03DCD0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -28,9 +30,14 @@ Global
 		{956CE6C1-F212-49CE-962E-53D8EB3A6053}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{956CE6C1-F212-49CE-962E-53D8EB3A6053}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{956CE6C1-F212-49CE-962E-53D8EB3A6053}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E99F201B-4FCC-46F7-8BBB-CBA77B03DCD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E99F201B-4FCC-46F7-8BBB-CBA77B03DCD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E99F201B-4FCC-46F7-8BBB-CBA77B03DCD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E99F201B-4FCC-46F7-8BBB-CBA77B03DCD0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{E2CBFFDC-E543-46FC-95F7-9B6734CC15F9} = {35523134-BD92-4929-9649-B85A28D45182}
 		{956CE6C1-F212-49CE-962E-53D8EB3A6053} = {C30939FA-B6B5-4491-92DD-3B06A127E325}
+		{E99F201B-4FCC-46F7-8BBB-CBA77B03DCD0} = {C30939FA-B6B5-4491-92DD-3B06A127E325}
 	EndGlobalSection
 EndGlobal
