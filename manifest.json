@@ -25,7 +25,7 @@
       "namespace": "Nexudus.Billing",
       "docPathPrefix": "rest-api/billing",
       "status": "in-progress",
-      "notes": "38/50 entities done. Chunks 1-6 done; 7-9 pending. Chunk 9 needs a ReadOnlyEndpoint<T> base added to core first (Invoice, LedgerEntry, CoworkerInvoice lack post/delete pages). Partial-verb entities so far: CoworkerBookingCreditUseHistory (no delete).",
+      "notes": "43/50 entities done. Chunks 1-7 done; 8-9 pending. Chunk 8 = standalone records (BasketSession, BusinessCharge, ResourceProduct). Chunk 9 needs a ReadOnlyEndpoint<T> base added to core first (Invoice, LedgerEntry, CoworkerInvoice lack post/delete pages). Partial-verb entities: CoworkerBookingCreditUseHistory (no delete).",
       "entities": [
         {
           "name": "BasketSession",
@@ -234,31 +234,31 @@
         {
           "name": "ProposalContract",
           "resourcePath": "billing/proposalcontracts",
-          "status": "pending",
+          "status": "done",
           "chunk": 7
         },
         {
           "name": "ProposalContractSchedule",
           "resourcePath": "billing/proposalcontractschedules",
-          "status": "pending",
+          "status": "done",
           "chunk": 7
         },
         {
           "name": "ProposalProduct",
           "resourcePath": "billing/proposalproducts",
-          "status": "pending",
+          "status": "done",
           "chunk": 7
         },
         {
           "name": "Proposal",
           "resourcePath": "billing/proposals",
-          "status": "pending",
+          "status": "done",
           "chunk": 7
         },
         {
           "name": "ProposalSchedule",
           "resourcePath": "billing/proposalschedules",
-          "status": "pending",
+          "status": "done",
           "chunk": 7
         },
         {
@@ -410,7 +410,7 @@
         {
           "id": 7,
           "theme": "Proposal family",
-          "status": "pending",
+          "status": "done",
           "entities": [
             "Proposal",
             "ProposalContract",

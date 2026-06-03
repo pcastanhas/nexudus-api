@@ -75,3 +75,12 @@ public enum PaymentProvider
     GoCardless = 12,
     StripeBACS = 13
 }
+
+/// <summary>Lifecycle status of a proposal (<c>eProposalStatus</c>).</summary>
+public enum ProposalStatus
+{
+    Draft = 1,
+    Sent = 2,
+    Accepted = 3,
+    Rejected = 4
+}

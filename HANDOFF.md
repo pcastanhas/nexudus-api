@@ -41,12 +41,11 @@ is never printed, and is never committed. `.gitignore` excludes `*.pat`, `.env`,
 
 ## Current status
 - Core library: **complete** (client, auth + refresh, paging, search/filter, command results, errors, streaming).
-- **Billing: 38 / 50 entities done** (chunks 1-6 done; 7-9 pending). Full inventory + chunk
-  status in `manifest.json`; next pending chunk is 7 (Proposal family).
-  Chunk 6 (Coworker credits, payments, tokens) added the `PaymentProvider` enum (`ePaymentProvider`,
-  partial - documented values only) and a `CoworkerLedgerEntryFilter` with `PaymentsBetween(from,to)`.
-  `CoworkerBookingCreditUseHistory` has no delete endpoint, so its API omits the delete wrapper.
-  Earlier chunks added `ContractContactType`/`AmlCheckStatus` (4) and `RecurrentChargePattern` (5).
+- **Billing: 43 / 50 entities done** (chunks 1-7 done; 8-9 pending). Full inventory + chunk
+  status in `manifest.json`; next pending chunk is 8 (standalone records: BasketSession,
+  BusinessCharge, ResourceProduct). Chunk 7 (Proposal family) added the `ProposalStatus` enum.
+  Enums added across chunks: `ContractContactType`/`AmlCheckStatus` (4), `RecurrentChargePattern` (5),
+  `PaymentProvider` (6), `ProposalStatus` (7). Partial-verb: `CoworkerBookingCreditUseHistory` (no delete).
 - Decisions locked: System group namespace = `Nexudus.SystemApi`; CRM = `Nexudus.Crm`.
 - Next up (Billing): the 44 pending entities are split into **9 ordered chunks** — see
   `docs/BILLING_PLAN.md` (human) and `manifest.json` -> `groups[Billing].chunks` (machine).
