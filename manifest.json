@@ -25,7 +25,7 @@
       "namespace": "Nexudus.Billing",
       "docPathPrefix": "rest-api/billing",
       "status": "in-progress",
-      "notes": "~50 entities. 6 done. Some are read-only/partial (Invoice, LedgerEntry, CoworkerInvoice, CoworkerInvoiceLine, *UseHistory) - confirm verb support from delete-/post- pages before assuming full CRUD; consider a ReadOnlyEndpoint<T> base for those.",
+      "notes": "26/50 entities done. Chunks 1-4 done; 5-9 pending. Some entities are read-only/partial (Invoice, LedgerEntry, CoworkerInvoice, CoworkerInvoiceLine, *UseHistory) - confirm verb support before assuming full CRUD; chunk 9 needs a ReadOnlyEndpoint<T> base added to core first.",
       "entities": [
         {
           "name": "BasketSession",
@@ -47,31 +47,31 @@
         {
           "name": "ContractContact",
           "resourcePath": "billing/contractcontacts",
-          "status": "pending",
+          "status": "done",
           "chunk": 4
         },
         {
           "name": "ContractDeposit",
           "resourcePath": "billing/contractdeposits",
-          "status": "pending",
+          "status": "done",
           "chunk": 4
         },
         {
           "name": "ContractPausedPeriod",
           "resourcePath": "billing/contractpausedperiods",
-          "status": "pending",
+          "status": "done",
           "chunk": 4
         },
         {
           "name": "ContractProduct",
           "resourcePath": "billing/contractproducts",
-          "status": "pending",
+          "status": "done",
           "chunk": 4
         },
         {
           "name": "ContractSchedule",
           "resourcePath": "billing/contractschedules",
-          "status": "pending",
+          "status": "done",
           "chunk": 4
         },
         {
@@ -369,7 +369,7 @@
         {
           "id": 4,
           "theme": "Contract family",
-          "status": "pending",
+          "status": "done",
           "entities": [
             "ContractContact",
             "ContractDeposit",

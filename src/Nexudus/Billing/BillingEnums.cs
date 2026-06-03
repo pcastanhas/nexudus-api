@@ -28,3 +28,24 @@ public enum TimeSpanWeekMonth
     Year = 4,
     Day = 5
 }
+
+/// <summary>Role of a virtual-office contract contact (<c>eContractContactType</c>).</summary>
+public enum ContractContactType
+{
+    None = 0,
+    Director = 1,
+    CompanyAlias = 2,
+    NominatedRecipient = 3
+}
+
+/// <summary>Anti-money-laundering check status for a contract contact (<c>eAmlCheckStatus</c>).</summary>
+public enum AmlCheckStatus
+{
+    NotStarted = 0,
+    Pending = 1,
+    Clear = 2,
+    PotentialMatch = 3,
+    ConfirmedMatch = 4,
+    Error = 5,
+    ManuallyCleared = 6
+}
