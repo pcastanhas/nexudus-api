@@ -84,3 +84,13 @@ public enum ProposalStatus
     Accepted = 3,
     Rejected = 4
 }
+
+/// <summary>Storecove e-invoicing transfer status (<c>eStorecoveInvoiceStatus</c>).</summary>
+public enum StorecoveInvoiceStatus
+{
+    None = 1,
+    TransferFailed = 2,
+    Processing = 3,
+    ProcessingFailed = 4,
+    Processed = 5
+}

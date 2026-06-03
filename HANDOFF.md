@@ -41,13 +41,16 @@ is never printed, and is never committed. `.gitignore` excludes `*.pat`, `.env`,
 
 ## Current status
 - Core library: **complete** (client, auth + refresh, paging, search/filter, command results, errors, streaming).
-- **Billing: 46 / 50 entities done** (chunks 1-8 done; only chunk 9 pending). Full inventory + chunk
-  status in `manifest.json`. **Chunk 9 (read-only) is the last Billing chunk** and has a prerequisite:
-  FIRST add a `ReadOnlyEndpoint<T>` base to core (Search/GetOne/GetMultiple/Update, no Create/Delete),
-  then generate Invoice, LedgerEntry, CoworkerInvoice, CoworkerInvoiceLine. Confirm each entity's verbs
-  from its docs (Invoice/LedgerEntry/CoworkerInvoice lack post/delete; CoworkerInvoiceLine has only put).
-  Enums added across chunks: `ContractContactType`/`AmlCheckStatus` (4), `RecurrentChargePattern` (5),
-  `PaymentProvider` (6), `ProposalStatus` (7). Partial-verb: `CoworkerBookingCreditUseHistory` (no delete).
+- **Billing: COMPLETE — 50 / 50 entities, all 9 chunks done.** Core gained a `ReadOnlyEndpoint<T>`
+  base (search/get/batch/enumerate + a protected `UpdateAsync`, no create/delete); `NexudusEndpoint<T>`
+  now derives from it and adds Create/Delete. Chunk 9 used it: Invoice, CoworkerInvoice, and
+  CoworkerInvoiceLine expose an Update wrapper; LedgerEntry is fully read-only.
+  Billing enums in `BillingEnums.cs`: `ChargePeriod`, `LastMinuteDiscountType`, `TimeSpanWeekMonth`,
+  `ContractContactType`, `AmlCheckStatus`, `RecurrentChargePattern`, `PaymentProvider`, `ProposalStatus`,
+  `StorecoveInvoiceStatus`. Partial-verb: `CoworkerBookingCreditUseHistory` (no delete wrapper).
+- **Next group: Authentication** (per the post-Billing order below). Per the manifest, first confirm
+  whether that group adds CRUD entities at all (token/refresh is already in core `NexudusClient`);
+  enumerate its entities from `llms.txt` under `docPathPrefix` and populate `manifest.json` before generating.
 - Decisions locked: System group namespace = `Nexudus.SystemApi`; CRM = `Nexudus.Crm`.
 - Next up (Billing): the 44 pending entities are split into **9 ordered chunks** — see
   `docs/BILLING_PLAN.md` (human) and `manifest.json` -> `groups[Billing].chunks` (machine).

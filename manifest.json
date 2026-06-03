@@ -24,8 +24,8 @@
       "name": "Billing",
       "namespace": "Nexudus.Billing",
       "docPathPrefix": "rest-api/billing",
-      "status": "in-progress",
-      "notes": "46/50 entities done. Chunks 1-8 done; only chunk 9 (read-only) pending. Chunk 9 = Invoice, LedgerEntry, CoworkerInvoice, CoworkerInvoiceLine. FIRST add a ReadOnlyEndpoint<T> base to core (Search/GetOne/GetMultiple/Update, no Create/Delete). Invoice/LedgerEntry/CoworkerInvoice lack post/delete pages; CoworkerInvoiceLine has only put (no post/delete) - confirm each entity's verbs from its docs before generating. Partial-verb so far: CoworkerBookingCreditUseHistory (no delete).",
+      "status": "done",
+      "notes": "COMPLETE: 50/50 entities done; all 9 chunks done. Added ReadOnlyEndpoint<T> to core (search/get/batch/enumerate + protected Update; no create/delete) for chunk 9: Invoice, CoworkerInvoice, CoworkerInvoiceLine expose Update; LedgerEntry is read-only. NexudusEndpoint<T> now derives from ReadOnlyEndpoint<T> and adds Create/Delete. Partial-verb (full base, wrapper omitted): CoworkerBookingCreditUseHistory (no delete).",
       "entities": [
         {
           "name": "BasketSession",
@@ -120,8 +120,8 @@
         {
           "name": "CoworkerInvoiceLine",
           "resourcePath": "billing/coworkerinvoicelines",
-          "status": "pending",
-          "note": "likely read-only",
+          "status": "done",
+          "note": "Read + update only (no create/delete); ReadOnlyEndpoint<T> with an Update wrapper.",
           "chunk": 9
         },
         {
@@ -133,8 +133,8 @@
         {
           "name": "CoworkerInvoice",
           "resourcePath": "billing/coworkerinvoices",
-          "status": "pending",
-          "note": "confirm verb support",
+          "status": "done",
+          "note": "Read + update only (no create/delete); ReadOnlyEndpoint<T> with an Update wrapper.",
           "chunk": 9
         },
         {
@@ -192,15 +192,15 @@
         {
           "name": "Invoice",
           "resourcePath": "billing/invoices",
-          "status": "pending",
-          "note": "read/update only - not creatable/deletable via API",
+          "status": "done",
+          "note": "Read + update only (no create/delete); ReadOnlyEndpoint<T> with an Update wrapper.",
           "chunk": 9
         },
         {
           "name": "LedgerEntry",
           "resourcePath": "billing/ledgerentries",
-          "status": "pending",
-          "note": "likely read-only",
+          "status": "done",
+          "note": "Read-only (search/get only); ReadOnlyEndpoint<T>, no update/create/delete.",
           "chunk": 9
         },
         {
@@ -433,7 +433,7 @@
         {
           "id": 9,
           "theme": "Read-only entities",
-          "status": "pending",
+          "status": "done",
           "entities": [
             "Invoice",
             "LedgerEntry",
