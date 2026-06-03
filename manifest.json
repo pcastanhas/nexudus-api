@@ -140,7 +140,8 @@
           "name": "CoworkerLedgerEntry",
           "resourcePath": "billing/coworkerledgerentries",
           "status": "pending",
-          "chunk": 6
+          "chunk": 6,
+          "note": "Customer payments ledger. Payments = credit entries; filter by from_/to_TransactionDate for payments in a date range. PaymentGatewayName uses ePaymentProvider -> add a typed PaymentProvider enum + a PaymentsBetween(from,to) filter helper."
         },
         {
           "name": "CoworkerPaymentMethod",
@@ -403,7 +404,7 @@
             "CoworkerInvoicePaymentToken",
             "CoworkerLedgerEntry"
           ],
-          "note": "Seven lightweight history/token/join records."
+          "note": "Seven lightweight history/token/join records. CoworkerLedgerEntry is the customer payments ledger (payments = credit entries, filterable by TransactionDate range) - give it a typed PaymentProvider enum."
         },
         {
           "id": 7,
