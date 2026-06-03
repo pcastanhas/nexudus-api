@@ -41,9 +41,9 @@ is never printed, and is never committed. `.gitignore` excludes `*.pat`, `.env`,
 
 ## Current status
 - Core library: **complete** (client, auth + refresh, paging, search/filter, command results, errors, streaming).
-- **Billing: 6 / 50 entities done** — Charge (+ ChargeFilter), Product, Tariff-adjacent pricing
-  pieces still pending. Done so far: Charge, DiscountCode, ExtraService, FinancialAccount,
-  PaymentGateway, Product. Full inventory + per-entity status is in `manifest.json`.
+- **Billing: 11 / 50 entities done** (chunks 1 done; 2-9 pending). Done: Charge, DiscountCode,
+  ExtraService, FinancialAccount, PaymentGateway, Product, Tariff, TariffProduct, TariffTimePass,
+  TariffBookingCredit, TariffSignupProduct. Full inventory + chunk status in `manifest.json`.
 - Decisions locked: System group namespace = `Nexudus.SystemApi`; CRM = `Nexudus.Crm`.
 - Next up (Billing): the 44 pending entities are split into **9 ordered chunks** — see
   `docs/BILLING_PLAN.md` (human) and `manifest.json` -> `groups[Billing].chunks` (machine).

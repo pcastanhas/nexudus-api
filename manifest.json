@@ -268,7 +268,7 @@
         {
           "name": "TariffBookingCredit",
           "resourcePath": "billing/tariffbookingcredits",
-          "status": "pending",
+          "status": "done",
           "chunk": 1
         },
         {
@@ -286,26 +286,26 @@
         {
           "name": "TariffProduct",
           "resourcePath": "billing/tariffproducts",
-          "status": "pending",
+          "status": "done",
           "chunk": 1
         },
         {
           "name": "Tariff",
           "resourcePath": "billing/tariffs",
-          "status": "pending",
+          "status": "done",
           "note": "large model (plans)",
           "chunk": 1
         },
         {
           "name": "TariffSignupProduct",
           "resourcePath": "billing/tariffsignupproducts",
-          "status": "pending",
+          "status": "done",
           "chunk": 1
         },
         {
           "name": "TariffTimePass",
           "resourcePath": "billing/tarifftimepasses",
-          "status": "pending",
+          "status": "done",
           "chunk": 1
         },
         {
@@ -331,7 +331,7 @@
         {
           "id": 1,
           "theme": "Tariff core + join tables",
-          "status": "pending",
+          "status": "done",
           "entities": [
             "Tariff",
             "TariffProduct",

@@ -18,3 +18,13 @@ public enum LastMinuteDiscountType
     Fixed = 2,
     Gradual = 3
 }
+
+/// <summary>Renewal/allowance period (<c>eTimeSpanWeekMonth</c>).</summary>
+public enum TimeSpanWeekMonth
+{
+    Week = 1,
+    CalendarMonth = 2,
+    TariffMonth = 3,
+    Year = 4,
+    Day = 5
+}
