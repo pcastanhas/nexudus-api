@@ -274,13 +274,13 @@
         {
           "name": "TariffDefaultDueDate",
           "resourcePath": "billing/tariffdefaultduedates",
-          "status": "pending",
+          "status": "done",
           "chunk": 2
         },
         {
           "name": "TariffExtraService",
           "resourcePath": "billing/tariffextraservices",
-          "status": "pending",
+          "status": "done",
           "chunk": 2
         },
         {
@@ -311,19 +311,19 @@
         {
           "name": "TimePass",
           "resourcePath": "billing/timepasses",
-          "status": "pending",
+          "status": "done",
           "chunk": 2
         },
         {
           "name": "TimePassPrice",
           "resourcePath": "billing/timepassprices",
-          "status": "pending",
+          "status": "done",
           "chunk": 2
         },
         {
           "name": "TimePassTimeSlot",
           "resourcePath": "billing/timepasstimeslots",
-          "status": "pending",
+          "status": "done",
           "chunk": 2
         }
       ],
@@ -344,7 +344,7 @@
         {
           "id": 2,
           "theme": "Tariff extras + TimePass family",
-          "status": "pending",
+          "status": "done",
           "entities": [
             "TariffExtraService",
             "TariffDefaultDueDate",
