@@ -9,8 +9,8 @@
       "name": "Authentication",
       "namespace": "Nexudus.Authentication",
       "docPathPrefix": "rest-api/authentication",
-      "status": "pending",
-      "notes": "Token/refresh flow already in core (NexudusClient). Confirm whether this group adds CRUD entities.",
+      "status": "done",
+      "notes": "No CRUD entities in this group - it is the auth mechanism, not record types. Fully covered by core NexudusClient: OAuth Bearer via password grant (+TOTP/2FA), refresh-token grant with automatic fallback to password on failure, static pre-acquired tokens, proactive refresh (expires_in + RefreshSkew), one-shot 401 retry, form-encoded token request to the 'token' endpoint. Documented Bearer + refresh flow is complete. Optional, NOT implemented (by design, non-entity, maintainer decision): (1) Basic Auth (appKey:secret / username:password Base64) for published-app/marketplace use; (2) 'Get Authentication Token for User' impersonation helper (Public API).",
       "entities": []
     },
     {

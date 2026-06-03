@@ -48,9 +48,13 @@ is never printed, and is never committed. `.gitignore` excludes `*.pat`, `.env`,
   Billing enums in `BillingEnums.cs`: `ChargePeriod`, `LastMinuteDiscountType`, `TimeSpanWeekMonth`,
   `ContractContactType`, `AmlCheckStatus`, `RecurrentChargePattern`, `PaymentProvider`, `ProposalStatus`,
   `StorecoveInvoiceStatus`. Partial-verb: `CoworkerBookingCreditUseHistory` (no delete wrapper).
-- **Next group: Authentication** (per the post-Billing order below). Per the manifest, first confirm
-  whether that group adds CRUD entities at all (token/refresh is already in core `NexudusClient`);
-  enumerate its entities from `llms.txt` under `docPathPrefix` and populate `manifest.json` before generating.
+- **Authentication: COMPLETE (no codegen).** Reviewed the docs: this group has no CRUD entities — it
+  is the auth mechanism. The documented Bearer + refresh flow is fully implemented in core
+  `NexudusClient` (password grant, TOTP/2FA, refresh-token grant with fallback to password, static
+  tokens, proactive refresh, 401 retry). Optional non-entity items left for a maintainer decision:
+  Basic Auth (published-app/marketplace) and the user-impersonation token helper (Public API).
+- **Next group: SystemApi** (the manifest's "System" group). Enumerate its entities from `llms.txt`
+  under its `docPathPrefix` and populate `manifest.json` before generating, then proceed entity by entity.
 - Decisions locked: System group namespace = `Nexudus.SystemApi`; CRM = `Nexudus.Crm`.
 - Next up (Billing): the 44 pending entities are split into **9 ordered chunks** — see
   `docs/BILLING_PLAN.md` (human) and `manifest.json` -> `groups[Billing].chunks` (machine).
