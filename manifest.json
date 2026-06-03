@@ -1,83 +1,74 @@
 {
-  "$comment": "Source-of-truth progress tracker. Each session reads this, picks the next 'pending' work, updates statuses, and commits. Entity lists per group are finalized from the docs as each group is started.",
+  "$comment": "Source-of-truth progress tracker. Each session reads this, picks the next 'pending' work, updates statuses, and commits. Statuses: done | pending | verify (verb support to confirm from docs).",
   "apiBaseUrl": "https://spaces.nexudus.com/api",
   "docsIndex": "https://learn.nexudus.com/llms.txt",
   "rootNamespace": "Nexudus",
   "targetFramework": "net8.0",
   "groups": [
-    {
-      "name": "Authentication",
-      "namespace": "Nexudus.Authentication",
-      "docPathPrefix": "rest-api/authentication",
-      "status": "pending",
-      "notes": "Token/refresh flow is already implemented in core (NexudusClient). Confirm whether this group adds CRUD entities (e.g. API keys) or is doc-only.",
-      "entities": []
-    },
-    {
-      "name": "Apps and Market Place",
-      "namespace": "Nexudus.Apps",
-      "docPathPrefix": "rest-api/apps",
-      "status": "pending",
-      "entities": []
-    },
-    {
-      "name": "Billing",
-      "namespace": "Nexudus.Billing",
-      "docPathPrefix": "rest-api/billing",
-      "status": "in-progress",
+    { "name": "Authentication", "namespace": "Nexudus.Authentication", "docPathPrefix": "rest-api/authentication", "status": "pending",
+      "notes": "Token/refresh flow already in core (NexudusClient). Confirm whether this group adds CRUD entities.", "entities": [] },
+    { "name": "Apps and Market Place", "namespace": "Nexudus.Apps", "docPathPrefix": "rest-api/apps", "status": "pending", "entities": [] },
+    { "name": "Billing", "namespace": "Nexudus.Billing", "docPathPrefix": "rest-api/billing", "status": "in-progress",
+      "notes": "~50 entities. 6 done. Some are read-only/partial (Invoice, LedgerEntry, CoworkerInvoice, CoworkerInvoiceLine, *UseHistory) - confirm verb support from delete-/post- pages before assuming full CRUD; consider a ReadOnlyEndpoint<T> base for those.",
       "entities": [
-        { "name": "Charge", "resourcePath": "billing/charges", "status": "done" }
-      ]
-    },
-    {
-      "name": "Collaboration",
-      "namespace": "Nexudus.Collaboration",
-      "docPathPrefix": "rest-api/collaboration",
-      "status": "pending",
-      "entities": []
-    },
-    {
-      "name": "Community",
-      "namespace": "Nexudus.Community",
-      "docPathPrefix": "rest-api/community",
-      "status": "pending",
-      "entities": []
-    },
-    {
-      "name": "Content",
-      "namespace": "Nexudus.Content",
-      "docPathPrefix": "rest-api/content",
-      "status": "pending",
-      "entities": []
-    },
-    {
-      "name": "CRM",
-      "namespace": "Nexudus.Crm",
-      "docPathPrefix": "rest-api/crm",
-      "status": "pending",
-      "entities": []
-    },
-    {
-      "name": "Security",
-      "namespace": "Nexudus.Security",
-      "docPathPrefix": "rest-api/security",
-      "status": "pending",
-      "entities": []
-    },
-    {
-      "name": "Spaces",
-      "namespace": "Nexudus.Spaces",
-      "docPathPrefix": "rest-api/spaces",
-      "status": "pending",
-      "entities": []
-    },
-    {
-      "name": "System",
-      "namespace": "Nexudus.System",
-      "docPathPrefix": "rest-api/system",
-      "status": "pending",
-      "notes": "Namespace 'Nexudus.System' can shadow the global 'System' namespace in unqualified references. Decide: keep for consistency (and qualify where needed) or use 'Nexudus.SystemApi'.",
-      "entities": []
-    }
+        { "name": "BasketSession", "resourcePath": "billing/basketsessions", "status": "pending" },
+        { "name": "BusinessCharge", "resourcePath": "billing/businesscharges", "status": "pending" },
+        { "name": "Charge", "resourcePath": "billing/charges", "status": "done" },
+        { "name": "ContractContact", "resourcePath": "billing/contractcontacts", "status": "pending" },
+        { "name": "ContractDeposit", "resourcePath": "billing/contractdeposits", "status": "pending" },
+        { "name": "ContractPausedPeriod", "resourcePath": "billing/contractpausedperiods", "status": "pending" },
+        { "name": "ContractProduct", "resourcePath": "billing/contractproducts", "status": "pending" },
+        { "name": "ContractSchedule", "resourcePath": "billing/contractschedules", "status": "pending" },
+        { "name": "CoworkerBookingCredit", "resourcePath": "billing/coworkerbookingcredits", "status": "pending" },
+        { "name": "CoworkerBookingCreditUseHistory", "resourcePath": "billing/coworkerbookingcreditusehistories", "status": "pending" },
+        { "name": "CoworkerContract", "resourcePath": "billing/coworkercontracts", "status": "pending" },
+        { "name": "CoworkerDiscountCode", "resourcePath": "billing/coworkerdiscountcodes", "status": "pending" },
+        { "name": "CoworkerExtraService", "resourcePath": "billing/coworkerextraservices", "status": "pending" },
+        { "name": "CoworkerExtraServiceUseHistory", "resourcePath": "billing/coworkerextraserviceusehistories", "status": "pending" },
+        { "name": "CoworkerInvoiceHistory", "resourcePath": "billing/coworkerinvoicehistories", "status": "pending" },
+        { "name": "CoworkerInvoiceLine", "resourcePath": "billing/coworkerinvoicelines", "status": "pending", "note": "likely read-only" },
+        { "name": "CoworkerInvoicePaymentToken", "resourcePath": "billing/coworkerinvoicepaymenttokens", "status": "pending" },
+        { "name": "CoworkerInvoice", "resourcePath": "billing/coworkerinvoices", "status": "pending", "note": "confirm verb support" },
+        { "name": "CoworkerLedgerEntry", "resourcePath": "billing/coworkerledgerentries", "status": "pending" },
+        { "name": "CoworkerPaymentMethod", "resourcePath": "billing/coworkerpaymentmethods", "status": "pending" },
+        { "name": "CoworkerProduct", "resourcePath": "billing/coworkerproducts", "status": "pending" },
+        { "name": "CoworkerTimePass", "resourcePath": "billing/coworkertimepasses", "status": "pending" },
+        { "name": "DiscountCode", "resourcePath": "billing/discountcodes", "status": "done" },
+        { "name": "ExtraServicePrice", "resourcePath": "billing/extraserviceprices", "status": "pending" },
+        { "name": "ExtraService", "resourcePath": "billing/extraservices", "status": "done" },
+        { "name": "ExtraServiceTimeSlot", "resourcePath": "billing/extraservicetimeslots", "status": "pending" },
+        { "name": "FinancialAccount", "resourcePath": "billing/financialaccounts", "status": "done" },
+        { "name": "Invoice", "resourcePath": "billing/invoices", "status": "pending", "note": "read/update only - not creatable/deletable via API" },
+        { "name": "LedgerEntry", "resourcePath": "billing/ledgerentries", "status": "pending", "note": "likely read-only" },
+        { "name": "PaymentGateway", "resourcePath": "billing/paymentgateways", "status": "done" },
+        { "name": "ProductBookingCredit", "resourcePath": "billing/productbookingcredits", "status": "pending" },
+        { "name": "ProductExtraService", "resourcePath": "billing/productextraservices", "status": "pending" },
+        { "name": "Product", "resourcePath": "billing/products", "status": "done" },
+        { "name": "ProductTimePass", "resourcePath": "billing/producttimepasses", "status": "pending" },
+        { "name": "ProposalContract", "resourcePath": "billing/proposalcontracts", "status": "pending" },
+        { "name": "ProposalContractSchedule", "resourcePath": "billing/proposalcontractschedules", "status": "pending" },
+        { "name": "ProposalProduct", "resourcePath": "billing/proposalproducts", "status": "pending" },
+        { "name": "Proposal", "resourcePath": "billing/proposals", "status": "pending" },
+        { "name": "ProposalSchedule", "resourcePath": "billing/proposalschedules", "status": "pending" },
+        { "name": "ResourceProduct", "resourcePath": "billing/resourceproducts", "status": "pending" },
+        { "name": "TariffBookingCredit", "resourcePath": "billing/tariffbookingcredits", "status": "pending" },
+        { "name": "TariffDefaultDueDate", "resourcePath": "billing/tariffdefaultduedates", "status": "pending" },
+        { "name": "TariffExtraService", "resourcePath": "billing/tariffextraservices", "status": "pending" },
+        { "name": "TariffProduct", "resourcePath": "billing/tariffproducts", "status": "pending" },
+        { "name": "Tariff", "resourcePath": "billing/tariffs", "status": "pending", "note": "large model (plans)" },
+        { "name": "TariffSignupProduct", "resourcePath": "billing/tariffsignupproducts", "status": "pending" },
+        { "name": "TariffTimePass", "resourcePath": "billing/tarifftimepasses", "status": "pending" },
+        { "name": "TimePass", "resourcePath": "billing/timepasses", "status": "pending" },
+        { "name": "TimePassPrice", "resourcePath": "billing/timepassprices", "status": "pending" },
+        { "name": "TimePassTimeSlot", "resourcePath": "billing/timepasstimeslots", "status": "pending" }
+      ] },
+    { "name": "Collaboration", "namespace": "Nexudus.Collaboration", "docPathPrefix": "rest-api/collaboration", "status": "pending", "entities": [] },
+    { "name": "Community", "namespace": "Nexudus.Community", "docPathPrefix": "rest-api/community", "status": "pending", "entities": [] },
+    { "name": "Content", "namespace": "Nexudus.Content", "docPathPrefix": "rest-api/content", "status": "pending", "entities": [] },
+    { "name": "CRM", "namespace": "Nexudus.Crm", "docPathPrefix": "rest-api/crm", "status": "pending", "entities": [] },
+    { "name": "Security", "namespace": "Nexudus.Security", "docPathPrefix": "rest-api/security", "status": "pending", "entities": [] },
+    { "name": "Spaces", "namespace": "Nexudus.Spaces", "docPathPrefix": "rest-api/spaces", "status": "pending", "entities": [] },
+    { "name": "System", "namespace": "Nexudus.SystemApi", "docPathPrefix": "rest-api/system", "status": "pending",
+      "notes": "Group namespace is 'Nexudus.SystemApi' (chosen to avoid shadowing the global System namespace).", "entities": [] }
   ]
 }

@@ -40,5 +40,13 @@ is never printed, and is never committed. `.gitignore` excludes `*.pat`, `.env`,
 
 ## Current status
 - Core library: **complete** (client, auth + refresh, paging, search/filter, command results, errors, streaming).
-- Pilot entity: **Billing → Charge — done** (full CRUD + typed filter + sample usage).
-- Next up: finalize entity lists for the remaining groups, then generate group by group.
+- **Billing: 6 / 50 entities done** — Charge (+ ChargeFilter), Product, Tariff-adjacent pricing
+  pieces still pending. Done so far: Charge, DiscountCode, ExtraService, FinancialAccount,
+  PaymentGateway, Product. Full inventory + per-entity status is in `manifest.json`.
+- Decisions locked: System group namespace = `Nexudus.SystemApi`; CRM = `Nexudus.Crm`.
+- Next up (Billing): work through the 44 pending entities in batches. Before generating the
+  read-only/partial ones (Invoice, LedgerEntry, CoworkerInvoice, CoworkerInvoiceLine, *UseHistory),
+  confirm which verbs exist and consider adding a `ReadOnlyEndpoint<T>` / partial base to core so
+  unsupported methods aren't exposed.
+- After Billing: Authentication → SystemApi → Security → Apps → CRM → Spaces → Community →
+  Collaboration → Content.
