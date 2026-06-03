@@ -168,7 +168,7 @@
         {
           "name": "ExtraServicePrice",
           "resourcePath": "billing/extraserviceprices",
-          "status": "pending",
+          "status": "done",
           "chunk": 3
         },
         {
@@ -179,7 +179,7 @@
         {
           "name": "ExtraServiceTimeSlot",
           "resourcePath": "billing/extraservicetimeslots",
-          "status": "pending",
+          "status": "done",
           "chunk": 3
         },
         {
@@ -209,13 +209,13 @@
         {
           "name": "ProductBookingCredit",
           "resourcePath": "billing/productbookingcredits",
-          "status": "pending",
+          "status": "done",
           "chunk": 3
         },
         {
           "name": "ProductExtraService",
           "resourcePath": "billing/productextraservices",
-          "status": "pending",
+          "status": "done",
           "chunk": 3
         },
         {
@@ -226,7 +226,7 @@
         {
           "name": "ProductTimePass",
           "resourcePath": "billing/producttimepasses",
-          "status": "pending",
+          "status": "done",
           "chunk": 3
         },
         {
@@ -356,7 +356,7 @@
         {
           "id": 3,
           "theme": "Product & ExtraService children",
-          "status": "pending",
+          "status": "done",
           "entities": [
             "ProductBookingCredit",
             "ProductExtraService",
