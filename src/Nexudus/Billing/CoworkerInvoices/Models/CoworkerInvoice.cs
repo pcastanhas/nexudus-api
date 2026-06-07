@@ -7,8 +7,9 @@ namespace Nexudus.Billing.CoworkerInvoices.Models;
 /// <para>
 /// The API supports search, get, and update for customer invoices but not create or delete, so this endpoint
 /// derives from <see cref="ReadOnlyEndpoint{T}"/>. The denormalised <see cref="CoworkerRegularPaymentProvider"/>
-/// is returned as a display string here (not the <c>PaymentProvider</c> enum). Fields below the
-/// <see cref="NexudusEntity"/> base mirror the "Get one CoworkerInvoice" response.
+/// is the coworker's regular <see cref="PaymentProvider"/> (returned as a numeric <c>ePaymentProvider</c> code);
+/// providers outside the documented set surface as undefined numeric enum values, which round-trip safely.
+/// Fields below the <see cref="NexudusEntity"/> base mirror the "Get one CoworkerInvoice" response.
 /// </para>
 /// </summary>
 public sealed class CoworkerInvoice : NexudusEntity
@@ -16,7 +17,7 @@ public sealed class CoworkerInvoice : NexudusEntity
     public int CoworkerId { get; set; }
     public string? CoworkerFullName { get; set; }
     public string? CoworkerRegularPaymentContractNumber { get; set; }
-    public string? CoworkerRegularPaymentProvider { get; set; }
+    public PaymentProvider? CoworkerRegularPaymentProvider { get; set; }
     public string? CoworkerCardNumber { get; set; }
     public string? CoworkerGoCardlessContractNumber { get; set; }
     public bool? CoworkerEnableGoCardlessPayments { get; set; }

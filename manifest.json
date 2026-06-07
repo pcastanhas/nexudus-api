@@ -134,7 +134,7 @@
           "name": "CoworkerInvoice",
           "resourcePath": "billing/coworkerinvoices",
           "status": "done",
-          "note": "Read + update only (no create/delete); ReadOnlyEndpoint<T> with an Update wrapper.",
+          "note": "Read + update only (no create/delete); ReadOnlyEndpoint<T> with an Update wrapper. FIX: CoworkerRegularPaymentProvider is the denormalised ePaymentProvider code (numeric, nullable) -> PaymentProvider? (was wrongly typed string?, which threw at runtime); undefined providers (e.g. 99, 1) round-trip as numeric enum values.",
           "chunk": 9
         },
         {
