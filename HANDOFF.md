@@ -53,6 +53,21 @@ is never printed, and is never committed. `.gitignore` excludes `*.pat`, `.env`,
   `NexudusClient` (password grant, TOTP/2FA, refresh-token grant with fallback to password, static
   tokens, proactive refresh, 401 retry). Optional non-entity items left for a maintainer decision:
   Basic Auth (published-app/marketplace) and the user-impersonation token helper (Public API).
+- **Sample tool: `samples/BCPRecordNexusActivity`** (status: scaffolded, DB-unverified). Console tool that
+  pulls Nexudus invoices+lines and payments for a date range, builds balanced MRI JOURNAL entries (one REF
+  per entity per type; continuous sequence: invoices first, then payments), INSERTs them into JOURNAL in one
+  transaction, then writes + emails an `.xlsx` of what posted; on any mapping/validation error it posts
+  nothing and emails an error workbook. Only external package: `Microsoft.Data.SqlClient` (config =
+  System.Text.Json, email = System.Net.Mail, xlsx = hand-rolled OOXML). Config in `appsettings.json`
+  (git-ignored; `appsettings.sample.json` is committed). Pure logic was compiled offline against
+  `Nexudus.dll` and checked against reconstructed sample data; the generated `.xlsx` was validated with
+  openpyxl. `SqlJournalWriter.cs` and the package restore were **not** verifiable in-sandbox and the tool has
+  not been run against a database — the user tests locally on a TEST MRI DB. See `manifest.json -> samples`
+  for the open assumptions (esp. the payment Credit/Debit selection rule).
+- **`nuget.config` changed:** it now adds the `nuget.org` source (after `<clear/>`) so package-dependent
+  samples can restore. The core library and package-free samples still build offline on a machine that can
+  reach nuget.org; the assistant sandbox cannot reach nuget.org (proxy 403), so this sample is not buildable
+  in-sandbox — verify it locally.
 - **Next group: SystemApi** (the manifest's "System" group). Enumerate its entities from `llms.txt`
   under its `docPathPrefix` and populate `manifest.json` before generating, then proceed entity by entity.
 - Decisions locked: System group namespace = `Nexudus.SystemApi`; CRM = `Nexudus.Crm`.

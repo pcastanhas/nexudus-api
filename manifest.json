@@ -4,6 +4,23 @@
   "docsIndex": "https://learn.nexudus.com/llms.txt",
   "rootNamespace": "Nexudus",
   "targetFramework": "net8.0",
+  "samples": {
+    "$comment": "Runnable sample/tool projects under samples/. These may use external NuGet packages (the core library does not).",
+    "BCPRecordNexusActivity": {
+      "status": "scaffolded-unverified-db",
+      "purpose": "Pull Nexudus invoices+lines and payments for a date range, build balanced MRI JOURNAL entries (one REF per entity per type, continuous sequence invoices->payments), INSERT them into the JOURNAL table in one transaction, then write+email an .xlsx of what posted. On any mapping/validation error it posts nothing and emails an error workbook instead.",
+      "package": "Microsoft.Data.SqlClient (only external dep; config=System.Text.Json, email=System.Net.Mail, xlsx=hand-rolled OOXML via System.IO.Compression)",
+      "config": "appsettings.json (git-ignored; commit appsettings.sample.json). Nexudus creds from appsettings Nexudus section or NEXUDUS_* env vars.",
+      "verified": "Pure logic (builder/mapping/config/DTOs/xlsx) compiled offline against Nexudus.dll and unit-checked against reconstructed sample data; generated .xlsx validated with openpyxl. SqlJournalWriter.cs NOT compiled here (package unrestorable in sandbox) and never run against a DB.",
+      "open_assumptions": [
+        "Payments: amount = Credit - Debit; include if Credit>0 OR (Debit>0 AND PaymentGatewayName!=None). The gateway test excludes invoice-charge debits; manual (non-gateway) refunds would be missed. Confirm/relax with user.",
+        "Payer name for payment DESCRPN = CoworkerInvoiceBillToName ?? CoworkerFullName.",
+        "Output workbook SOURCE=NX and REF=N{YYMM}{seq} differ from the user's original IM / 1 / 2 sample values (by design).",
+        "No re-run guard (operator avoids period/REF collisions)."
+      ]
+    },
+    "nugetConfigChange": "Root nuget.config now adds the nuget.org source (still <clear/> first) so package-dependent samples can restore. Core library + package-free samples remain offline-buildable on a machine that can reach nuget.org; the assistant sandbox cannot reach nuget.org, so this project is not buildable in-sandbox."
+  },
   "groups": [
     {
       "name": "Authentication",

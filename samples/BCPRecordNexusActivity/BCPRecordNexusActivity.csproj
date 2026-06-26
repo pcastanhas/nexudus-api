@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>BcpRecordNexusActivity</RootNamespace>
+    <AssemblyName>BCPRecordNexusActivity</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Nexudus\Nexudus.csproj" />
+  </ItemGroup>
+
+  <!-- The only external dependency: the SQL Server client used to INSERT the
+       journal entries. Everything else (config, email, .xlsx writing) uses the
+       base class library, keeping this project close to the repo's package-free
+       convention. -->
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="5.2.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Sample config is committed; the real appsettings.json is created locally
+         and git-ignored (it holds the connection string and SMTP password). -->
+    <None Update="appsettings.sample.json" CopyToOutputDirectory="PreserveNewest" />
+    <None Update="appsettings.json" CopyToOutputDirectory="PreserveNewest" Condition="Exists('appsettings.json')" />
+  </ItemGroup>
+
+</Project>

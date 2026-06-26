@@ -18,3 +18,6 @@ Thumbs.db
 *.pat
 secrets.*
 .env
+
+# Local config with secrets (connection string, SMTP password)
+samples/BCPRecordNexusActivity/appsettings.json
