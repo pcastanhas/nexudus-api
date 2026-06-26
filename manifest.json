@@ -7,7 +7,7 @@
   "samples": {
     "$comment": "Runnable sample/tool projects under samples/. These may use external NuGet packages (the core library does not).",
     "BCPRecordNexusActivity": {
-      "status": "scaffolded-unverified-db",
+      "status": "awaiting-user-offline-testing",
       "purpose": "Pull Nexudus invoices+lines and payments for a date range, build balanced MRI JOURNAL entries (one REF per entity per type, continuous sequence invoices->payments), INSERT them into the JOURNAL table in one transaction, then write+email an .xlsx of what posted. On any mapping/validation error it posts nothing and emails an error workbook instead.",
       "package": "Microsoft.Data.SqlClient (only external dep; config=System.Text.Json, email=System.Net.Mail, xlsx=hand-rolled OOXML via System.IO.Compression)",
       "config": "appsettings.json (git-ignored; commit appsettings.sample.json). Nexudus creds from appsettings Nexudus section or NEXUDUS_* env vars.",
@@ -17,7 +17,8 @@
         "Payer name for payment DESCRPN = CoworkerInvoiceBillToName ?? CoworkerFullName.",
         "Output workbook SOURCE=NX and REF=N{YYMM}{seq} differ from the user's original IM / 1 / 2 sample values (by design).",
         "No re-run guard (operator avoids period/REF collisions)."
-      ]
+      ],
+      "next": "User is building/restoring locally and testing against a TEST MRI database offline; they will return with feedback/results. Do not modify the tool until then. Resume from their feedback (likely: confirm/relax the payment Credit/Debit selection rule, mapping adjustments, and the first real DB insert)."
     },
     "nugetConfigChange": "Root nuget.config now adds the nuget.org source (still <clear/> first) so package-dependent samples can restore. Core library + package-free samples remain offline-buildable on a machine that can reach nuget.org; the assistant sandbox cannot reach nuget.org, so this project is not buildable in-sandbox."
   },

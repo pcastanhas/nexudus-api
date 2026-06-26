@@ -53,7 +53,11 @@ is never printed, and is never committed. `.gitignore` excludes `*.pat`, `.env`,
   `NexudusClient` (password grant, TOTP/2FA, refresh-token grant with fallback to password, static
   tokens, proactive refresh, 401 retry). Optional non-entity items left for a maintainer decision:
   Basic Auth (published-app/marketplace) and the user-impersonation token helper (Public API).
-- **Sample tool: `samples/BCPRecordNexusActivity`** (status: scaffolded, DB-unverified). Console tool that
+- **Sample tool: `samples/BCPRecordNexusActivity`** (status: scaffolded, **awaiting the user's offline test
+  results** — do not treat as production-ready, and do not change its behavior until the user returns with
+  feedback). The user is restoring/building it locally and running it against a TEST MRI database offline;
+  expect the next session to start from their feedback (bugs, the open payment-selection assumption, mapping
+  tweaks, etc.). Console tool that
   pulls Nexudus invoices+lines and payments for a date range, builds balanced MRI JOURNAL entries (one REF
   per entity per type; continuous sequence: invoices first, then payments), INSERTs them into JOURNAL in one
   transaction, then writes + emails an `.xlsx` of what posted; on any mapping/validation error it posts
